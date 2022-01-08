@@ -142,3 +142,19 @@ export const submitComment = async (data: any) => {
 
   return result.json();
 };
+
+export const getComments = async (slug: any) => {
+  const query = gql`
+    query GetComments($slug: String!) {
+      comments(where: { post: { slug: $slug } }) {
+        name
+        createdAt
+        comment
+      }
+    }
+  `;
+
+  const result = await request(graphQLAPI, query, { slug });
+
+  return result.comments;
+};
