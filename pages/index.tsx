@@ -1,7 +1,7 @@
 import Head from "next/head";
 import { useEffect, useState } from "react";
 import { PostCard, PostWidget, Categories } from "../components";
-import { getPost } from "../services/getPost";
+import { getPost } from "../services";
 
 export default function Home({ posts }: any) {
   return (
