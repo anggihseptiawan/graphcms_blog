@@ -130,3 +130,15 @@ export const getCategories = async () => {
 
   return result.categories;
 };
+
+export const submitComment = async (data: any) => {
+  const result = await fetch("/api/comments", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  });
+
+  return result.json();
+};
