@@ -11,7 +11,7 @@ const Header = () => {
 
   return (
     <div className="container mx-auto px-10 mb-8">
-      <div className="border-b w-full inline-block border-gray-700 py-8">
+      <div className="border-b-2 w-full inline-block border-gray-500 py-8">
         <div className="md:float-left block">
           <Link href="/">
             <span className="cursor-pointer font-bold text-4xl">GraphCMS</span>
