@@ -143,7 +143,7 @@ export const submitComment = async (data: any) => {
   return result.json();
 };
 
-export const getComments = async (slug: any) => {
+export const getComments = async (slug: string) => {
   const query = gql`
     query GetComments($slug: String!) {
       comments(where: { post: { slug: $slug } }) {
