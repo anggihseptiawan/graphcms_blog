@@ -1,4 +1,6 @@
-const Author = ({ author }: any) => {
+import { Author } from "../@types/Author";
+
+const Author = ({ author }: { author: Author }) => {
   return (
     <section className="text-center mt-20 mb-8 pt-12 pb-8 relative rounded-lg bg-white bg-opacity-20">
       <div className=" w-full absolute inset-x-1/2 -translate-x-1/2 -top-14">

@@ -3,17 +3,22 @@ import { submitComment } from "../services";
 
 const CommentsForm = ({ slug }: any) => {
   const [error, setError] = useState(false);
-  const [localStorage, setLocalStorage] = useState(null);
+  // const [localStorage, setLocalStorage] = useState(null);
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
 
-  const commentInput = useRef<any>();
-  const nameInput = useRef<any>();
-  const emailInput = useRef<any>();
-  const storeDataInput = useRef<any>();
+  const commentInput = useRef<HTMLTextAreaElement | any>(null);
+  const nameInput = useRef<HTMLInputElement | any>(null);
+  const emailInput = useRef<HTMLInputElement | any>(null);
+  const storeDataInput = useRef<HTMLInputElement | any>(null);
 
   useEffect(() => {
-    nameInput.current.value = window.localStorage.getItem("name");
-    emailInput.current.value = window.localStorage.getItem("email");
+    if (nameInput && nameInput.current) {
+      nameInput.current.value = window.localStorage.getItem("name");
+    }
+
+    if (emailInput && emailInput.current) {
+      emailInput.current.value = window.localStorage.getItem("email");
+    }
   }, []);
 
   const handleCommentSubmission = () => {

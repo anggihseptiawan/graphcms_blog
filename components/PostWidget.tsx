@@ -1,10 +1,17 @@
 import moment from "moment";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { PostCard } from "../@types/PostCard";
 import { getRecentPosts, getSimilarPosts } from "../services";
 
-const PostWidget = ({ categories, slug }: any) => {
-  const [relatedPost, setRelatedPost] = useState<[]>();
+const PostWidget = ({
+  categories,
+  slug,
+}: {
+  categories?: string[];
+  slug?: string;
+}) => {
+  const [relatedPost, setRelatedPost] = useState<PostCard[]>([]);
 
   useEffect(() => {
     if (slug) {
@@ -15,8 +22,6 @@ const PostWidget = ({ categories, slug }: any) => {
       getRecentPosts().then((result) => setRelatedPost(result));
     }
   }, [slug]);
-
-  console.log(relatedPost);
 
   return (
     <div className="bg-white shadow-lg rounded-lg p-8 mb-8">

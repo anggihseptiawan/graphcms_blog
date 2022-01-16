@@ -1,7 +1,12 @@
 import moment from "moment";
 
 const PostDetail = ({ post }: any) => {
-  const getContentFragment = (index, text, obj, type) => {
+  const getContentFragment = (
+    index: number,
+    text: any,
+    obj: any,
+    type: string
+  ) => {
     let modifiedText = text;
 
     if (obj) {
@@ -22,7 +27,7 @@ const PostDetail = ({ post }: any) => {
       case "heading-three":
         return (
           <h3 key={index} className="text-xl font-semibold mb-4">
-            {modifiedText.map((item, i) => (
+            {modifiedText.map((item: string, i: number) => (
               <div key={i}>{item}</div>
             ))}
           </h3>
@@ -30,7 +35,7 @@ const PostDetail = ({ post }: any) => {
       case "paragraph":
         return (
           <p key={index} className="mb-8">
-            {modifiedText.map((item, i) => (
+            {modifiedText.map((item: string, i: number) => (
               <div key={i}>{item}</div>
             ))}
           </p>
@@ -38,7 +43,7 @@ const PostDetail = ({ post }: any) => {
       case "heading-four":
         return (
           <h4 key={index} className="text-md font-semibold mb-4">
-            {modifiedText.map((item, i) => (
+            {modifiedText.map((item: string, i: number) => (
               <div key={i}>{item}</div>
             ))}
           </h4>
@@ -103,8 +108,9 @@ const PostDetail = ({ post }: any) => {
         </div>
         <h1 className="text-3xl mb-8 font-semibold">{post.title}</h1>
         {post?.content?.raw?.children?.map((typeObj: any, idx: number) => {
-          const children = typeObj?.children?.map((item, itemIndex) =>
-            getContentFragment(itemIndex, item.text, item, item.type)
+          const children = typeObj?.children?.map(
+            (item: any, itemIndex: number) =>
+              getContentFragment(itemIndex, item.text, item, item.type)
           );
 
           return getContentFragment(idx, children, typeObj, typeObj.type);
